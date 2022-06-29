@@ -1,0 +1,44 @@
+.banner { 
+    display: flex;
+    height: calc(100vh - var(--body-top-padding));
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 992px) {  
+    /* when browser's width is at least 992px wide */
+    .banner .image {
+        position: relative;
+        top: -4vw;
+        left: -1vw;
+        margin-bottom: -20%;
+    }
+    .banner .image-caption {
+        font-size: 12px;
+        position: relative;
+        left: 6vw;
+    }
+}
+@media screen and (max-width: 991px) {  
+    .banner .image {
+        position: relative;
+        top: -2vw;
+        left: -1vw;
+        margin-bottom: -15%;
+    }
+    .banner .image-caption {
+        font-size: 12px;
+        position: relative;
+        left: 4vw;
+    }
+}
+
+.banner .image-caption {
+    font-size: 12px;
+}
+
+.mark {
+    background-color: #b6face;
+}
