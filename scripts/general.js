@@ -1,10 +1,9 @@
 // Add click event listener with the specified handler function to all nav items.
 function addListenerToNavItems(handler) {
-  let navItems = document.getElementsByClassName("nav-link");
-  console.log(navItems);
-  console.log(navItems.length);
+  const navBrand = document.querySelector(".navbar-brand");
+  navBrand.addEventListener("click", handler);
+  const navItems = document.getElementsByClassName("nav-link");
   for (let i = 0; i < navItems.length; i++) {
-    console.log(navItems[i]);
     navItems[i].addEventListener("click", handler);
   }
 }
@@ -13,12 +12,16 @@ function addListenerToNavItems(handler) {
 // Set a cookie in the form of name=value;
 // If a cookie with similar name exists, update its value instead.
 function setCookie(name, value) {
-  document.cookie = name + "=" + value + "; ";
+  let date = new Date();
+  date.setDate(date.getDate() + 1);  // set cookie to expire 1 day later
+  document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; ";
 }
 
 // Similar to setCookie() but sets a cookie with an object for value instead. 
 function setObjectCookie(name, object) {
-  document.cookie = name + "=" + JSON.stringify(object) + "; ";
+  let date = new Date();
+  date.setDate(date.getDate() + 1);  // set cookie to expire 1 day later
+  document.cookie = name + "=" + JSON.stringify(object) + "; expires=" + date.toUTCString() + "; ";
 }
 
 // Get a cookie value by its name and return it as a string.

@@ -20,7 +20,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand">LaSallians’ Grade Calculator</a>
+            <a class="navbar-brand active" href="index.html" aria-current="page">LaSallians’ Grade Calculator</a>
             <!-- For collapsable toggler when window is smaller -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <a class="navbar-toggler-icon" href=""></a>
@@ -28,11 +28,11 @@
             <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav">
-                    <a class="nav-link first active" aria-current="page" href="../index.html">Grade</a>
-                    <a class="nav-link" href="../gpa.html">GPA</a>
-                    <a class="nav-link" href="">CGPA</a>
-                    <a class="nav-link" href="">Target GPA</a>
-                    <a class="nav-link" href="">Upload/Download</a>
+                    <a class="nav-link first" href="page-template.html">Grade</a>
+                    <a class="nav-link" href="gpa.html">GPA</a>
+                    <a class="nav-link" href="cgpa.html">CGPA</a>
+                    <a class="nav-link" href="target-gpa.html">Target GPA</a>
+                    <a class="nav-link" href="upload-download.html">Upload/Download</a>
                 </div>
             </div>
         </div>
@@ -47,39 +47,10 @@
         </a>
     </div>
 
-    <!-- Help/Guide Modal -->
-    <div class="modal fade" id="help-modal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Grade Calculator</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Some instructions/images...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Test (remove in actual) -->
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-
-
     
     <!-- Call page-specific JS at the bottom after HTML has loaded -->
-    <script src="scripts/grade.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>

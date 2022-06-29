@@ -66,11 +66,16 @@ h1 {
     color: var(--pale-green);
     text-shadow: 1px 4px 5px black;
 }
+.navbar-brand.active {
+    color: white;
+    text-shadow: 1px 4px 5px black;
+}
 .nav-link:hover {
     color: var(--pale-green);
     background-color: var(--slightly-bright-green);
 }
 .nav-link.active {
+    font-weight: bolder;
     background-color: var(--bright-green-highlight);
 }
 /* navbar toggler */
