@@ -1,46 +1,57 @@
-// This function handles the w3-include-html attribute and imports the specified 
-// html into the html document where it was called.
-// Source: https://www.w3schools.com/howto/howto_html_include.asp
-function includeHTML() {
-  let elements, i, element, filename, xhttp;
-  // Loop through each HTML elements
-  elements = document.getElementsByTagName("*");
-  for (i = 0; i < elements.length; i++) {
-    element = elements[i];
-    // Check if the element has the specified attribute
-    filename = element.getAttribute("w3-include-html");
-    if (filename) {
-      // If true, make HTTP request with the attribute value as the filename
-      xhttp = new XMLHttpRequest();
-      // Set the XMLHttpRequest.onreadystatechange event handler property.
-      // This is triggered whenever XMLHttpRequest.readyState property changes.
-      xhttp.onreadystatechange = function() {
-        // XMLHttpRequest.readyState property returns the state of the XMLHttpRequest
-        // Docu: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
-        if (this.readyState == 4) {  // 4 for DONE state
-          // XMLHttpRequest.status property returns the numerical HTTP response status codes
-          // If OK or SUCCESS (200), change content of element to the received text from the HTTP request
-          if (this.status == 200) {
-            element.innerHTML = this.responseText;
-          }
-          // If NOT FOUND (404)
-          if (this.status == 404) {
-            element.innerHTML = "Navigation bar not found.";
-          }
-          // Remove the attribute, and call this function again for succeeding elements with that attribute
-          element.removeAttribute("w3-include-html");
-          includeHTML();
-        }
-      }
-      // Initialize new HTTP request and send request
-      xhttp.open("GET", filename, true);  // method, url, async
-      xhttp.send();
-      return;
-    }
+// Add click event listener with the specified handler function to all nav items.
+function addListenerToNavItems(handler) {
+  let navItems = document.getElementsByClassName("nav-link");
+  console.log(navItems);
+  console.log(navItems.length);
+  for (let i = 0; i < navItems.length; i++) {
+    console.log(navItems[i]);
+    navItems[i].addEventListener("click", handler);
   }
 }
 
-// Allows active nav item to be set dynamically
-function toggleActiveNavLinks() {
- 
+/**************************** FUNCTIONS FOR COOKIES ****************************/
+// Set a cookie in the form of name=value;
+// If a cookie with similar name exists, update its value instead.
+function setCookie(name, value) {
+  document.cookie = name + "=" + value + "; ";
 }
+
+// Similar to setCookie() but sets a cookie with an object for value instead. 
+function setObjectCookie(name, object) {
+  document.cookie = name + "=" + JSON.stringify(object) + "; ";
+}
+
+// Get a cookie value by its name and return it as a string.
+// Source: https://www.w3schools.com/js/js_cookies.asp
+function getCookieByName(cname) {
+  let name = cname + "=";
+  // Decode string of cookies to accomodate cookies with special characters
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookieArray = decodedCookie.split(';');
+  for(let i = 0; i <cookieArray.length; i++) {
+    let c = cookieArray[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    // if cookie found, return value
+    if (c.indexOf(name) == 0) { 
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+// Get a cookie whose value is a JSON string of an object by its name.  
+// Returns an object.
+// Source: https://stackoverflow.com/a/11344672
+function getObjectCookieByName(name) {
+  // cookie.match() returns an array of match results or null if empty
+  let result = document.cookie.match(new RegExp(name + '=([^;]+)'));
+  
+  // SHORT CIRC EVAL: If result is false/null, AND operator stops, returns orig. 
+  // value of result, and the 2nd operand won't be evaluated.
+  // Read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND
+  result && (result = JSON.parse(result[1]));
+  return result;
+}
+
