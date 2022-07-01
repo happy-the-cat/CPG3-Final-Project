@@ -77,8 +77,58 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
 
+    <!-- Table -->
+    <!-- To resize table width, set CSS width property of table-container class -->
+    <div class="table-container mb-3">
+        <div class="table-responsive">
+            <table class="table table-hover table-sm" id="#">
+                <thead>
+                    <tr>
+                        <th scope="col" style="display: none;">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr class="active">
+                        <th scope="row" style="display: none;">1</th>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="display: none;">2</th>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td><input type="text" class="form-control" placeholder="text"></td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="display: none;">3</th>
+                        <td colspan="2">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor </td>
+                        <td>@twitter Lorem ipsum dolor Lorem ipsum dolor </td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    
+    <!-- Other stuff for testing purposes -->
+    <h1>Some stuff After table</h1>
+
+
     <!-- Call page-specific JS at the bottom after HTML has loaded -->
     <script src="scripts/script-template.js"></script>
 </body>

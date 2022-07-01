@@ -3,9 +3,14 @@
     --ls-green: #087830;
     --slightly-bright-green: #0AA040;
     --bright-green-highlight: #0edd58;
+    --highlight: #b6face;
     --pale-green: rgb(228, 253, 237);
     --white-green: #F3FEF7;
+    --light-grey: #dee2e6;
     --body-top-padding: 4.5rem;
+}
+::selection {  /* Change highlight color */
+    background: var(--highlight);
 }
 
 body {
@@ -20,6 +25,9 @@ h1 {
 a {
     color: black;
     text-decoration: none;
+}
+a:hover {
+    color: var(--slightly-bright-green);
 }
 
 /* Font style & weights */
@@ -131,4 +139,48 @@ a {
 .modal-body {
     color: black;
 }
+
+/* Table container */
+.table-container {
+    border-style: solid;
+    border-color: var(--light-grey);
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 1rem 1rem;
+}
+
+
+/* Table */
+.table>:not(caption)>*>* {  /* table padding between cells */
+    padding: 0.25rem 0.35rem;
+}
+table{
+    /* Render table faster with fixed width based on the first row; problematic w/ small screens */
+    /* table-layout: fixed;   */
+}
+td {
+    vertical-align: middle;  /* vertically align text in cells center */
+}
+
+/* Forms */
+.form-control:focus {
+    border-width: 1px;
+    border-color: var(--slightly-bright-green);
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+    padding: .375rem .75rem;
+}
+table .form-control {
+    background-color: transparent;
+    border-width: 0px;
+    padding: 0;
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: ease-in;
+}
+table .form-control:focus {
+    padding: .375rem .65rem;
+    margin: 5px 0;
+    cursor: text;
+}
+
 
