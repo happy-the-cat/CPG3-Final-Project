@@ -30,6 +30,7 @@ a:hover {
     color: var(--slightly-bright-green);
 }
 
+
 /* Font style & weights */
 .title {
     font-size: 1.6rem;
@@ -44,10 +45,21 @@ a:hover {
     font-weight: bold;
 }
 
-/* bootstrap mark / highlight color */
-.mark {
+
+/* bootstrap classes */
+.mark {  /* text highlight */
     background-color: #b6face;
 }
+.btn-outline-success { 
+    border-color: var(--slightly-bright-green);
+    color: var(--slightly-bright-green);
+}
+.btn-success, .btn-outline-success:hover {
+    background-color: var(--slightly-bright-green);
+    border-color: var(--slightly-bright-green);
+}
+.btn-success:hover { background-color: var(--ls-green); }
+
 
 /* navbar styles */
 @media screen and (min-width: 992px) {  
@@ -153,7 +165,6 @@ a:hover {
     border-radius: 10px;
     padding: 1rem 1rem;
 }
-
 
 /* Table */
 .table.pad-less>:not(caption)>*>* {  /* table padding between cells */
