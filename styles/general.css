@@ -36,7 +36,7 @@ a:hover {
     font-weight: bold;
 }
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 .mini {
@@ -60,7 +60,8 @@ a:hover {
         padding-bottom: 12px;
     }
 }
-@media screen and (max-width: 991px) {  
+@media screen and (max-width: 991px) { 
+     /* when browser's width is less than or equal to 991px */
     .nav-link.first {
         margin-top: 10px;
     }
@@ -151,14 +152,14 @@ a:hover {
 
 
 /* Table */
-.table>:not(caption)>*>* {  /* table padding between cells */
+.table.pad-less>:not(caption)>*>* {  /* table padding between cells */
     padding: 0.25rem 0.35rem;
 }
 table{
     /* Render table faster with fixed width based on the first row; problematic w/ small screens */
     /* table-layout: fixed;   */
 }
-td {
+th, td {
     vertical-align: middle;  /* vertically align text in cells center */
 }
 

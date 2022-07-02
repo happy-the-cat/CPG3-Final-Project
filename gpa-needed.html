@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaSallians’ Grade Calculator</title>
+    <title>GPA Needed - LSGC</title>
     <!-- Necessary stylesheets for every page -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/gpa-needed.css">
 
     <!-- Import Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -28,10 +29,10 @@
             <!-- Navbar items -->
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav">
-                    <a class="nav-link first active" aria-current="page" href="page-template.html">Grade</a>
+                    <a class="nav-link" href="page-template.html">Grade</a>
                     <a class="nav-link" href="gpa.html">GPA</a>
                     <a class="nav-link" href="cgpa.html">CGPA</a>
-                    <a class="nav-link" href="gpa-needed.html">GPA Needed</a>
+                    <a class="nav-link first active" aria-current="page" href="gpa-needed.html">GPA Needed</a>
                     <a class="nav-link" href="upload-download.html">Upload/Download</a>
                 </div>
             </div>
@@ -40,7 +41,7 @@
 
     <!-- Start of actual page specifc content -->
     <div class="header">
-        <h1 class="title">Grade Calculator</h1>
+        <h1 class="title">GPA Needed Calculator</h1>
         <a href="" class="mini" data-bs-toggle="modal" data-bs-target="#help-modal">
             <i class="bi bi-question-circle-fill"></i>
             Help
@@ -57,6 +58,12 @@
                 </div>
                 <div class="modal-body">
                     Some instructions/images...
+
+
+
+
+
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -65,72 +72,62 @@
         </div>
     </div>
 
-
-
-    <!-- Test (REMOVE THIS) -->
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
+    <p>Calculate the GPA you need for an aspired CGPA.</p>
 
     <!-- Table -->
     <!-- To resize table width, set CSS width property of table-container class -->
-    <div class="table-container mb-3">
-        <div class="table-responsive">
-            <!-- remove pad-less for bootstrap default padding  -->
-            <table class="table table-hover pad-less" id="#">
-                <thead>
-                    <tr>
-                        <th scope="col" style="display: none;">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        <th scope="col">Heading</th>
-                        <th scope="col">Heading</th>
-                        <th scope="col">Heading</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <th scope="row" style="display: none;">1</th>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td><input type="number" class="form-control" placeholder="number"></td>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="display: none;">2</th>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td><input type="text" class="form-control" placeholder="text"></td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="display: none;">3</th>
-                        <td colspan="2">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor </td>
-                        <td>@twitter Lorem ipsum dolor Lorem ipsum dolor </td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="table-container col-7 ">
+            <form id="form">
+                <table class="table table-hover" id="#gpa-needed-table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Desired Final CGPA</th>
+                            <td><input type="number" class="form-control" id="desired-cgpa" 
+                                placeholder="Enter a value between 1.000 to 4.000" min="1" max="4" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please a number between 1.000 to 4.000.')"
+                                oninput="this.setCustomValidity('')"
+                            ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Latest CGPA</th>
+                            <td><input type="number" class="form-control" id="last-cgpa" 
+                                placeholder="Enter a value between 1.000 to 4.000" min="1" max="4" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please a number between 1.000 to 4.000.')"
+                                oninput="this.setCustomValidity('')"
+                            ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Number of Units Earned</th>
+                            <td><input type="number" class="form-control" id="units-earned" 
+                                placeholder="Enter a whole number" min="0" max="300" required 
+                                oninvalid="this.setCustomValidity('Please a whole number.')"
+                                oninput="this.setCustomValidity('')"
+                            ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Number of Units Remaining</th>
+                            <td><input type="number" class="form-control" id="units-left" 
+                                placeholder="Enter a whole number" min="0" max="300" required
+                                oninvalid="this.setCustomValidity('Please a whole number.')"
+                                oninput="this.setCustomValidity('')"
+                            ></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success" type="submit" onsubmit="">Calculate CGPA</button>
+            </form>   
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 result-container">
+            <h1>GPA Needed per Unit Left:</h1>
+            <input type="text" class="form-control-plaintext" id="result"
+                disabled readonly value="1234">
         </div>
     </div>
 
-    <!-- Other stuff for testing purposes -->
-    <h1>Some stuff After table</h1>
-
 
     <!-- Call page-specific JS at the bottom after HTML has loaded -->
-    <script src="scripts/script-template.js"></script>
+    <script src="scripts/gpa-needed.js"></script>
 </body>
 </html>
