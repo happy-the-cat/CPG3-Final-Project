@@ -1,5 +1,5 @@
 /***************************** CONSTANTS & OBJETCS *****************************/
-const COOKIE_NAME = "gpaNeeded"; // change to w.e u want
+const COOKIE_NAME = "gpaNeeded";
 
 class GPANeeded {
 
@@ -24,24 +24,6 @@ class GPANeeded {
   }
 
 }
-
-/**
- * create object for table
- * make a get all and set all/update function
- * make new function to calculate
- * update navitems click handler
- * update load
- * call calculate funciton on Calculate button click/onsubmit
- * 
- * guide:
- *  add help instructions
- *  style it
- * 
- * CSS:
- * style result texts
- * edit smaller screens results padding
- * button? (no need)
- */
 
 /**************************** Sequential function calls *************************/
 // Instantiate GPANeeded
@@ -72,7 +54,6 @@ form.addEventListener("submit", function (event) {
 
 
 /********************************** FUNCTIONS ***********************************/
-
 /**
  * Updates parameters the given GPANeeded instance to what the user has inputted.
  * @param {GPANeeded} obj 
