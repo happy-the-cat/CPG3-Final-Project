@@ -22,8 +22,8 @@ class GPANeededCalc {
       throw "Some of the parameters are either undefined, empty, or not a number!"
     } 
   }
-
 }
+
 
 /**************************** Sequential function calls *************************/
 // Instantiate GPANeeded

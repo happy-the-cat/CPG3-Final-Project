@@ -35,3 +35,47 @@ function toggleActiveNavLinks(activeNavLinkId) {
     // this.className += " active";
     // }
   }
+
+  let obj = {gpaNeededCalc: {
+    cgpaCurrent: null,
+    cgpaDesired: null,
+    gpaNeeded: 3.2,
+    unitsEarned: null,
+    unitsLeft: null},
+    grade:{
+    email: "ew",
+    text: "ee"}};
+    const house = {
+      price: null,
+      currency: null,
+      address: {
+        city: null,
+        street: null,
+        postal_code: null,
+        state: {
+          name: null,
+          abbreviation: {
+            key1 : null,
+            key2: undefined,
+            key3: {
+              subk1: null,
+              subk2: null,
+              subk3: null,
+              subk4: {
+                sk1: '',
+                sk2: '',
+                sk3: null,
+              },
+              subk5: null,
+              subk6: null,
+            }
+          }
+        }
+      },
+      owner: {
+        name: null
+      }
+    }
+    console.log(isEmpty(obj));
+    console.log(isEmpty(house));
+    

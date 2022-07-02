@@ -11,6 +11,34 @@ function addListenerToNavItems(handler) {
   }
 }
 
+
+/**************************** FUNCTIONS FOR OBJECTS ****************************/
+
+/**
+ * Check if a given object is an object, not an array, and not null.
+ * @param {any} obj object to be checked.
+ * @returns {boolean} true if object is an object, else false.
+ */
+function isObject(obj) {
+  // Source: https://stackoverflow.com/a/8511350
+  return (
+    typeof obj === 'object' && 
+    !Array.isArray(obj) && obj !== null && obj !== ''
+  );
+}
+
+/**
+ * Recursive function for dynamically checking if the values of a nested object 
+ * of unknown depth is empty, null, or undefined. Also checks non-nested objects.
+ * Returns true if so, otherwise, false.
+ * @param {object} obj nested or non-nested object to be checked
+ * @returns {boolean} true if `obj` is nullish or empty, else false.
+ */
+function isEmpty(obj) {
+  return (obj === '' || obj === null || obj === undefined) || Object.values(obj).every(x => isObject(x) ? isEmpty(x) : (x === '' || x === null || x === undefined));
+}
+
+
 /**************************** FUNCTIONS FOR COOKIES ****************************/
 /**
  * Set a cookie in the form of `name=value;`  
@@ -30,9 +58,11 @@ function setCookie(name, value) {
  * @param {object} object cookie value in the form of an object
  */
 function setObjectCookie(name, object) {
-  let date = new Date();
-  date.setDate(date.getDate() + 1);  // set cookie to expire 1 day later
-  document.cookie = name + "=" + JSON.stringify(object) + "; expires=" + date.toUTCString() + "; ";
+  if (isObject(object)) {
+    let date = new Date();
+    date.setDate(date.getDate() + 1);  // set cookie to expire 1 day later
+    document.cookie = name + "=" + JSON.stringify(object) + "; expires=" + date.toUTCString() + "; ";
+  }
 }
 
 /**
@@ -47,9 +77,7 @@ function setCookies(cookiesObj) {
   // where name = key, value = cookieObj[key]
   if (keys.length) {
     for (let key of keys) {
-      // Check if cookieObj is an object
-      // Source: https://stackoverflow.com/a/8511350
-      if (typeof cookiesObj[key] === 'object' && !Array.isArray(cookiesObj[key])) {
+      if (isObject(cookiesObj[key])) {
         setObjectCookie(key, cookiesObj[key]);
       } else {
         setCookie(key, cookiesObj[key]);
@@ -104,7 +132,7 @@ function getObjectCookieByName(name) {
 /**
  * Get all cookies stored in the site and return them as an object with a collection of cookies. 
  * Assumes that each cookie only has one value and takes into account object values.
- * @returns Object containing the parsed collection of cookies
+ * @returns Object containing the parsed collection of cookies, or null if empty.
  */
 function getCookies() {
   // Source: https://stackoverflow.com/a/252959

@@ -3,7 +3,7 @@
 document.getElementById("download-btn").addEventListener("click", function(e) {
   let cookies = getCookies();
   let statusField = document.getElementById("download-status");
-  if (cookies === null) {
+  if (isEmpty(cookies)) {
     statusField.textContent = "No values to save. Please start inputting first or upload a JSON file containing previous inputs.";
     this.removeAttribute("download");
     statusField.classList.remove("green");
@@ -65,8 +65,12 @@ document.getElementById("reset-btn").addEventListener("click", function(event) {
   const statusField = document.getElementById("reset-status");
   if (confirm("Reset will clear ALL data inputted thus far. Are you sure you want to proceed?")) {
     deleteAllCookies();
-    statusField.textContent = "Data successfully cleared!";
+    statusField.textContent = "Data cleared!";
+    statusField.classList.remove("green");
+    statusField.classList.add("red");
   } else {
     statusField.textContent = "Reset data cancelled!";
+    statusField.classList.remove("red");
+    statusField.classList.add("green"); 
   }
 });
