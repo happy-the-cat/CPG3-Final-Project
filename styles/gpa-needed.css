@@ -1,10 +1,10 @@
-table {
-  table-layout: fixed;
+.row {
+  /* Remove default horizontal gutter of bootstrap row class */
+	--bs-gutter-x: 0;
 }
 
-.table-container {
-  box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1),
-    0 11px 6px -7px rgba(43, 43, 43, 0.1);
+table {
+  table-layout: fixed;
 }
 
 @media (min-width: 768px) {  /* md breakpoint */

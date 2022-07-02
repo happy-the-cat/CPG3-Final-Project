@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Upload/Download - LSGC</title>
+    <!-- Necessary stylesheets for every page -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/upload-download.css">
+
+    <!-- Import Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Necessary JavaScripts for every page -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="scripts/general.js"></script>  
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">LaSallians’ Grade Calculator</a>
+            <!-- For collapsable toggler when window is smaller -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-toggler-icon" href=""></a>
+            </button>
+            <!-- Navbar items -->
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <div class="navbar-nav">
+                    <a class="nav-link first" href="page-template.html">Grade</a>
+                    <a class="nav-link" href="gpa.html">GPA</a>
+                    <a class="nav-link" href="cgpa.html">CGPA</a>
+                    <a class="nav-link" href="gpa-needed.html">GPA Needed</a>
+                    <a class="nav-link active" aria-current="page" href="upload-download.html">Upload/Download</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Start of actual page specifc content -->
+    <div class="header">
+        <h1 class="title">JSON Upload/Download</h1>
+        <a href="" class="mini" data-bs-toggle="modal" data-bs-target="#help-modal">
+            <i class="bi bi-question-circle-fill"></i>
+            Help
+        </a>
+    </div>
+
+    <!-- Help/Guide Modal -->
+    <div class="modal fade" id="help-modal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 title" id="helpModalLabel">Grade Calculator Guide</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><b>Upload</b> → Upload a JSON file downloaded from your previous visit here and continue where you left off. Data will be saved as cookies and loaded automatically to each page.</li>
+                        <ol>
+                            <li>Click on the <u>Choose File</u> button.</li>
+                            <li>In the popup File Explorer window, navigate to where your JSON file is and select it.</li>
+                            <li>Click <u>Open</u> or just press the <u>Enter</u> key on your keyboard.</li>
+                            <li>Click the green <span class="mark">Upload</span> button.</li>
+                            <li>A message indicating the upload status will appear beside it.</li>
+                        </ol>
+
+                        <li><b>Download</b> → Save your inputted grades and the calculated results to a JSON file that can be reuploaded later on.</li>
+                        <ol>
+                            <li>Click on the green <span class="mark">Download</span> button to start the download.</li>
+                            <li>A message indicating the download status will appear beside it.</li>
+                        </ol>
+                        Note that:
+                        <ul> 
+                            <li>At least <b>one (1)</b> input to some field is neessary for download to happen.</li>
+                            <li>File will be downloaded to your <u>Downloads</u> folder with a filename of <i>grade-calculator-data.json</i>.</li>
+                        </ul>
+                        Reminders on editing the JSON file:
+                        <ul>
+                            <li>For editing the JSON file, please <u>DO NOT change the keys</u> (the words on the direct left hand side of a colon ( : )).</li>
+                            <li>Data entries can be edited by modifying the values <u>after</u> the colon.</li>
+                        </ul>
+                    </ul>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Test (REMOVE THIS) -->
+    <div class="table-container shadow">
+        <form id="form">
+            <div>
+                <label for="fileInput" class="form-label">Upload JSON file to load previously entered data.</label>
+                <input class="form-control form-control" id="fileInput" type="file" accept=".json, application/json" required>
+            </div>
+            <div class="row align-items-center mt-3">
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Upload</button>
+                </div>
+                <div class="col-auto">
+                    <span id="upload-status"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-container shadow row">
+        <label>Download the current data in each calculator as a JSON file.</label>
+        <div class="row align-items-center mt-2">
+            <div class="col-auto">
+                <a class="btn btn-success" id="download-btn" download="grade-calculator-data.json">Download</a>
+            </div>
+            <div class="col-auto">
+                <span id="download-status"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-container shadow row">
+        <label>Reset calculators data.</label>
+        <div class="row align-items-center mt-2">
+            <div class="col-auto">
+                <a class="btn btn-danger" id="reset-btn">Reset</a>
+            </div>
+            <div class="col-auto">
+                <span class="red" id="reset-status"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Call page-specific JS at the bottom after HTML has loaded -->
+    <script src="scripts/upload-download.js"></script>
+</body>
+</html>

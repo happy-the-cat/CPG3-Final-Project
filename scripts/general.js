@@ -36,6 +36,30 @@ function setObjectCookie(name, object) {
 }
 
 /**
+ * Set a bunch of cookies by setting each key-value pair in a given object 
+ * as a cookie. Values in `cookiesObj` can be another object or a non-object.
+ * @param {object} cookiesObj object contianing a bunch of cookies as key-value pairs
+ */
+function setCookies(cookiesObj) {
+  const keys = Object.keys(cookiesObj);
+  // If keys array is not empty, iterate thru each key (not index thus not for in).
+  // Cookie will be stored in the form of `name=value;` 
+  // where name = key, value = cookieObj[key]
+  if (keys.length) {
+    for (let key of keys) {
+      // Check if cookieObj is an object
+      // Source: https://stackoverflow.com/a/8511350
+      if (typeof cookiesObj[key] === 'object' && !Array.isArray(cookiesObj[key])) {
+        setObjectCookie(key, cookiesObj[key]);
+      } else {
+        setCookie(key, cookiesObj[key]);
+      }
+    }
+  }
+}
+
+
+/**
  * Get a cookie value by its name and return it as a string.  
  * @param {string} cname cookie name
  * @returns cookie value
@@ -44,10 +68,10 @@ function getCookieByName(cname) {
   // Source: https://www.w3schools.com/js/js_cookies.asp
   let name = cname + "=";
   // Decode string of cookies to accomodate cookies with special characters
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let cookieArray = decodedCookie.split(';');
-  for(let i = 0; i <cookieArray.length; i++) {
-    let c = cookieArray[i];
+  let decodedCookies = decodeURIComponent(document.cookie);
+  let cookies = decodedCookies.split(';');
+  for(let i = 0; i < cookies.length; i++) {
+    let c = cookies[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
     }
@@ -58,7 +82,6 @@ function getCookieByName(cname) {
   }
   return "";
 }
-
 
 /**
  * Get a cookie whose value is a JSON string of an object by its name. 
@@ -78,3 +101,46 @@ function getObjectCookieByName(name) {
   return result;
 }
 
+/**
+ * Get all cookies stored in the site and return them as an object with a collection of cookies. 
+ * Assumes that each cookie only has one value and takes into account object values.
+ * @returns Object containing the parsed collection of cookies
+ */
+function getCookies() {
+  // Source: https://stackoverflow.com/a/252959
+  // Get the list of escaped/encoded key-value pairs (cookies), decode them,
+  // and split them by their delimiter (;)
+  const c = document.cookie;
+  if (!c.length) return null;  // If there are no cookies, return.
+
+  const pairs = decodeURIComponent(c).split(";");
+  let cookies = {};  // empty object for the parsed cookies
+  // Iterate thru each key-value pair and parse them.
+  for (let i = 0; i < pairs.length; i++){
+    const pair = pairs[i].split("=");
+    // For multiple values: pair.slice(1).join('='));
+    if (pair[1].trim().startsWith("{")) {
+      cookies[(pair[0]+'').trim()] = JSON.parse(pair[1]);
+    } else {
+      cookies[(pair[0]+'').trim()] = pair[1];
+    }
+  }
+  return cookies;
+}
+
+/**
+ * Delete all cookies in the site.
+ */
+function deleteAllCookies() {
+  // Source: https://stackoverflow.com/a/179514
+  const c = document.cookie;
+  if (!c.length) return;
+
+  const cookies = c.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const index = cookie.indexOf("=");
+    const name = (index > -1) ? cookie.substring(0, index) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}

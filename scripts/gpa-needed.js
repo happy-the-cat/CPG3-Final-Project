@@ -1,9 +1,9 @@
 /***************************** CONSTANTS & OBJETCS *****************************/
-const COOKIE_NAME = "gpaNeeded";
+const COOKIE_NAME = "gpaNeededCalc";
 
-class GPANeeded {
+class GPANeededCalc {
 
-  constructor(cgpaDesired, cgpaCurrent, unitsEarned, unitsLeft) {
+  constructor(cgpaDesired=0, cgpaCurrent=0, unitsEarned=0, unitsLeft=0) {
     Object.assign(this, {
       cgpaDesired, cgpaCurrent, unitsEarned, unitsLeft
     });
@@ -27,36 +27,34 @@ class GPANeeded {
 
 /**************************** Sequential function calls *************************/
 // Instantiate GPANeeded
-const gpaNeeded = new GPANeeded();
-
-// Get Form & Results Field
-const form = document.getElementById("form");
-const resultField = document.getElementById("result");
+const gpaNeededCalc = new GPANeededCalc();
 
 // Add click event listener to all functions
 addListenerToNavItems(navItemsClickHandler);
 // Load save values onto their corresponding HTML elements
 loadSavedValues();
 
-form.addEventListener("submit", function (event) {
-  updateParamsToUserInputs(gpaNeeded);
-  let res;
-  try {
-    res = gpaNeeded.calculate();
-  } catch (e) {
-    res = e;
+document.getElementById("form").addEventListener("submit", 
+  function (event) {
+    updateParamsToUserInputs(gpaNeededCalc);
+    let res;
+    try {
+      res = gpaNeededCalc.calculate();
+    } catch (e) {
+      res = e;
+    }
+    document.getElementById("result").value = res;
+    // Prevent the default behavior of submit buttons 
+    // -- submit form data to server & reload page.
+    event.preventDefault();
   }
-  resultField.value = res;
-  console.log(resultField.value);
-  // Prevent the default behavior of submit buttons -- submit form data to server.
-  event.preventDefault();
-});
+);
 
 
 /********************************** FUNCTIONS ***********************************/
 /**
  * Updates parameters the given GPANeeded instance to what the user has inputted.
- * @param {GPANeeded} obj 
+ * @param {GPANeededCalc} obj 
  */
 function updateParamsToUserInputs(obj) {
   obj.cgpaDesired = parseFloat(document.getElementById("desired-cgpa").value);
@@ -66,9 +64,9 @@ function updateParamsToUserInputs(obj) {
 }
 
 function navItemsClickHandler() {
-  updateParamsToUserInputs(gpaNeeded);
-  setObjectCookie(COOKIE_NAME, gpaNeeded);
-  delete gpaNeeded;
+  updateParamsToUserInputs(gpaNeededCalc);
+  setObjectCookie(COOKIE_NAME, gpaNeededCalc);
+  delete gpaNeededCalc;
 }
 
 function loadSavedValues() {
@@ -79,12 +77,12 @@ function loadSavedValues() {
   // for-of is used instead of for-in to retrieve the key value and not index.
   // Source: https://stackoverflow.com/a/684692
   if (keys.length) {
-    for (var key of keys) {
-      gpaNeeded[key] = cookieObj[key];
+    for (let key of keys) {
+      gpaNeededCalc[key] = cookieObj[key];
     }
   }
-  document.getElementById("desired-cgpa").value = gpaNeeded.cgpaDesired;
-  document.getElementById("last-cgpa").value = gpaNeeded.cgpaCurrent;
-  document.getElementById("units-earned").value = gpaNeeded.unitsEarned;
-  document.getElementById("units-left").value = gpaNeeded.unitsLeft;
+  document.getElementById("desired-cgpa").value = gpaNeededCalc.cgpaDesired;
+  document.getElementById("last-cgpa").value = gpaNeededCalc.cgpaCurrent;
+  document.getElementById("units-earned").value = gpaNeededCalc.unitsEarned;
+  document.getElementById("units-left").value = gpaNeededCalc.unitsLeft;
 }

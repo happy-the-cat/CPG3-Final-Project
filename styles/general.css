@@ -165,6 +165,10 @@ a:hover {
     border-radius: 10px;
     padding: 1rem 1rem;
 }
+.table-container.shadow {
+    box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1),
+        0 11px 6px -7px rgba(43, 43, 43, 0.1);
+}
 
 /* Table */
 .table.pad-less>:not(caption)>*>* {  /* table padding between cells */
@@ -183,6 +187,9 @@ th, td {
     border-width: 1px;
     border-color: var(--slightly-bright-green);
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.form-control:focus:not(input[type=file]) {  
+    /* form-control:focus whose type is not file */
     padding: .375rem .75rem;
 }
 table .form-control {
