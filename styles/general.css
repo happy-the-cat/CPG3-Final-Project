@@ -44,6 +44,10 @@ a:hover {
     font-weight: bold;
 }
 
+/* bootstrap mark / highlight color */
+.mark {
+    background-color: #b6face;
+}
 
 /* navbar styles */
 @media screen and (min-width: 992px) {  

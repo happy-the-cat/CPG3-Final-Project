@@ -57,13 +57,25 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Some instructions/images...
+                    Easily calculate the GPA you need for an aspired CGPA by entering only <b>4</b> parameters that can be found under <b>View Grades</b> and <b>View Curriculum Audit</b> tabs of <b>My.LaSalle</b> univertity portal.
+                    <ol>
+                        <li>Enter your desired final CGPA, lastest CPGA, number of units earned so far, and number of units left for the rest of your stay in DLSU on the table at the left side. </li>
+                        <i>Whare can I find the last 3 values?</i>
+                        <ul> 
+                            <li>Latest CGPA → @<u>View Grades</u> in the My.Lasalle portal</li>
+                            <li>Number of units earned → @<u>View Curriculum Audit</u></li>
+                            <li>Number of units remaining → @<u>View Curriculum Audit</u></li>
+                        </ul>
+                        <i>Take note of the following constraints for the input:</i>
+                        <ul>
+                            <li>CGPA → a number from 1.000 to 4.000 that can have up to 3 decimal places only </li>
+                            <li>Units → a <u>whole</u> number from 0 to 300 </li>
+                        </ul>
+                        
+                        <li>Once everything has been inputted, click the green <span class="mark">Calculate</span> button to start computation.</li>
 
-
-
-
-
-                    
+                        <li>The computed GPA needed will then be displayed on the green box on the right side.</li>
+                    </ol>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -72,12 +84,12 @@
         </div>
     </div>
 
-    <p>Calculate the GPA you need for an aspired CGPA.</p>
+    <p>Calculate the GPA you need for an aspired CGPA. Click Help for more details.</p>
 
     <!-- Table -->
     <!-- To resize table width, set CSS width property of table-container class -->
     <div class="row">
-        <div class="table-container col-7 ">
+        <div class="table-container col-md-7">
             <form id="form">
                 <table class="table table-hover" id="#gpa-needed-table">
                     <tbody>
@@ -115,14 +127,13 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-success" type="submit" onsubmit="">Calculate CGPA</button>
+                <button class="btn btn-success" type="submit" onsubmit="">Calculate</button>
             </form>   
         </div>
-        <div class="col-1"></div>
-        <div class="col-4 result-container">
+        <div class="col-md-5 result-container">
             <h1>GPA Needed per Unit Left:</h1>
             <input type="text" class="form-control-plaintext" id="result"
-                disabled readonly value="1234">
+                disabled readonly value="">
         </div>
     </div>
 

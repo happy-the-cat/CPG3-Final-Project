@@ -9,13 +9,6 @@ class GPANeeded {
     });
   }
 
-  setAll(cgpaDesired, cgpaCurrent, unitsEarned, unitsLeft) {
-    // shortcut for this.title = title assignment
-    Object.assign(this, {
-      cgpaDesired, cgpaCurrent, unitsEarned, unitsLeft
-    });
-  }
-
   calculate() {
     // Check if every value of this object is NOT null, NOT empty and IS a numeric.
     // Source: https://stackoverflow.com/a/49427583
@@ -58,34 +51,10 @@ const gpaNeeded = new GPANeeded();
 const form = document.getElementById("form");
 const resultField = document.getElementById("result");
 
-// console.log(gpaNeeded);
-// console.log(gpaNeeded.length);
-// let x = JSON.stringify(gpaNeeded);
-// console.log(x);
-// console.log(JSON.parse(x));
-
-// const gpa2 = new GPANeeded(1);
-// gpa2.unitsLeft = 30;
-// let y = JSON.stringify(gpa2);
-// console.log(y);
-// y = JSON.parse(y);
-// console.log(y);
-// console.log(y);
-
-// const keys = Object.keys(y);
-// console.log(keys.length);
-// if (keys.length) {
-//   for (var key of keys) {
-//     console.log(key + " -> " + y[key]);
-//     gpaNeeded[key] = y[key];
-//   }
-// }
-// console.log(gpaNeeded);
-
 // Add click event listener to all functions
 addListenerToNavItems(navItemsClickHandler);
 // Load save values onto their corresponding HTML elements
-// loadSavedValues();
+loadSavedValues();
 
 form.addEventListener("submit", function (event) {
   updateParamsToUserInputs(gpaNeeded);
@@ -102,6 +71,8 @@ form.addEventListener("submit", function (event) {
 });
 
 
+/********************************** FUNCTIONS ***********************************/
+
 /**
  * Updates parameters the given GPANeeded instance to what the user has inputted.
  * @param {GPANeeded} obj 
@@ -116,25 +87,23 @@ function updateParamsToUserInputs(obj) {
 function navItemsClickHandler() {
   updateParamsToUserInputs(gpaNeeded);
   setObjectCookie(COOKIE_NAME, gpaNeeded);
+  delete gpaNeeded;
 }
 
 function loadSavedValues() {
   const cookieObj = getObjectCookieByName(COOKIE_NAME);
-  console.log(cookieObj);
-
   const keys = Object.keys(cookieObj);
-  console.log(keys.length);
+  // If cookie object is not empty, iterate thru each key and set the its value
+  // as the value of its counterpart in the GPANeeded object instance. 
+  // for-of is used instead of for-in to retrieve the key value and not index.
+  // Source: https://stackoverflow.com/a/684692
   if (keys.length) {
     for (var key of keys) {
-      console.log(key + " -> " + cookieObj[key]);
       gpaNeeded[key] = cookieObj[key];
     }
   }
-
-  // replace with ur codes to load the last saved table contents (saved in an object) here
-  // check general.js for the list of cookie functions
-  document.getElementById("desired-cgpa").value = gpaNeededObject.cgpaDesired;
-  document.getElementById("last-cgpa").value = gpaNeededObject.cgpaCurrent;
-  document.getElementById("units-earned").value = gpaNeededObject.unitsEarned;
-  document.getElementById("units-left").value = gpaNeededObject.unitsLeft;
+  document.getElementById("desired-cgpa").value = gpaNeeded.cgpaDesired;
+  document.getElementById("last-cgpa").value = gpaNeeded.cgpaCurrent;
+  document.getElementById("units-earned").value = gpaNeeded.unitsEarned;
+  document.getElementById("units-left").value = gpaNeeded.unitsLeft;
 }

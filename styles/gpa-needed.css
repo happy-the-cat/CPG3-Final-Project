@@ -1,14 +1,36 @@
+table {
+  table-layout: fixed;
+}
+
 .table-container {
   box-shadow: 0 0 5px 0 rgba(43, 43, 43, 0.1),
     0 11px 6px -7px rgba(43, 43, 43, 0.1);
 }
 
-@media screen and (max-width: 900px) {
-  .table-container {
-    width: 100%;
+@media (min-width: 768px) {  /* md breakpoint */
+  .result-container {
+    padding-left: 3rem;
   }
 }
+.result-container {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
 
-table {
-  table-layout: fixed;
+.result-container>* {
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+}
+.result-container>input {
+  background-color: var(--highlight);
+  border-radius: 0.5rem;
+}
+
+.btn-success {
+  background-color: var(--slightly-bright-green);
+  border-color: var(--slightly-bright-green);
+}
+.btn-success:hover {
+  background-color: var(--ls-green);
 }
