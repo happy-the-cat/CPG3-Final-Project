@@ -10,30 +10,31 @@ loadSavedValues();
 function navItemsClickHandler() {
   var table = document.getElementById("table");
   const names = [];
-  const units = [];
-  const grades = [];
+  const cgpa  = [];
   const leng = table.rows.length;
 
   for(let i = 1; i<table.rows.length; i++){
     names[i-1] = table.rows[i].cells[1].children[0].value;
-    units[i-1] = table.rows[i].cells[2].children[0].value;
-    grades[i-1] = table.rows[i].cells[3].children[0].value;
+    cgpa [i-1] = table.rows[i].cells[2].children[0].value;
   }
 
   let obj = {
     namelist: names,
-    unitlist: units,
-    gradelist: grades,
+    cgpalist: cgpa,
     len: leng,
   };
-
+  console.log("hello");
   console.log(obj);
+
   setObjectCookie(COOKIE_NAME, obj);
 }
 
 function loadSavedValues() {
   let obj = getObjectCookieByName(COOKIE_NAME);
   var table = document.getElementById("table");
+  // console.log("--------------");
+  // console.log(obj);
+
 
   if(obj.len>6){
     for(let i=0;i<obj.len-6;i++){
@@ -44,7 +45,7 @@ function loadSavedValues() {
   for(let i = 1; i<obj.len; i++){
       if(obj.namelist[i-1]!="undefined"){
         table.rows[i].cells[1].children[0].value = obj.namelist[i-1];
-        table.rows[i].cells[2].children[0].value = obj.unitlist[i-1];
+        table.rows[i].cells[2].children[0].value = obj.cgpalist[i-1];
       }else{
         break;
       }
@@ -103,10 +104,7 @@ function total(){
 
   for(let i = 1; i<table.rows.length; i++){
       gpa += Number(table.rows[i].cells[2].children[0].value);
-      console.log(table.rows[i].cells[2].children[0].value);
   }
-  console.log(gpa);
-  console.log("HELLOHELLOHELLO");
 
   document.getElementById("result").value = (gpa/ (table.rows.length - 1)).toFixed(2);
 }
