@@ -22,13 +22,13 @@ function addListenerToNavItems(handler) {
 function isObject(obj) {
   // Source: https://stackoverflow.com/a/8511350
   return (
-    typeof obj === 'object' && 
+    typeof obj === 'object' &&
     !Array.isArray(obj) && obj !== null && obj !== ''
   );
 }
 
 /**
- * Recursive function for dynamically checking if the values of a nested object 
+ * Recursive function for dynamically checking if the values of a nested object
  * of unknown depth is empty, null, or undefined. Also checks non-nested objects.
  * Returns true if so, otherwise, false.
  * @param {object} obj nested or non-nested object to be checked
@@ -41,7 +41,7 @@ function isEmpty(obj) {
 
 /**************************** FUNCTIONS FOR COOKIES ****************************/
 /**
- * Set a cookie in the form of `name=value;`  
+ * Set a cookie in the form of `name=value;`
  * If a cookie with similar name exists, update its value instead.
  * @param {string} name cookie name
  * @param {string} value cookie value
@@ -51,7 +51,7 @@ function setCookie(name, value) {
   date.setDate(date.getDate() + 1);  // set cookie to expire 1 day later
   document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; ";
 }
- 
+
 /**
  * Similar to setCookie() but sets a cookie with an object for value instead.
  * @param {string} name cookie name
@@ -66,14 +66,14 @@ function setObjectCookie(name, object) {
 }
 
 /**
- * Set a bunch of cookies by setting each key-value pair in a given object 
+ * Set a bunch of cookies by setting each key-value pair in a given object
  * as a cookie. Values in `cookiesObj` can be another object or a non-object.
  * @param {object} cookiesObj object contianing a bunch of cookies as key-value pairs
  */
 function setCookies(cookiesObj) {
   const keys = Object.keys(cookiesObj);
   // If keys array is not empty, iterate thru each key (not index thus not for in).
-  // Cookie will be stored in the form of `name=value;` 
+  // Cookie will be stored in the form of `name=value;`
   // where name = key, value = cookieObj[key]
   if (keys.length) {
     for (let key of keys) {
@@ -88,7 +88,7 @@ function setCookies(cookiesObj) {
 
 
 /**
- * Get a cookie value by its name and return it as a string.  
+ * Get a cookie value by its name and return it as a string.
  * @param {string} cname cookie name
  * @returns cookie value
  */
@@ -104,7 +104,7 @@ function getCookieByName(cname) {
       c = c.substring(1);
     }
     // if cookie found, return value
-    if (c.indexOf(name) == 0) { 
+    if (c.indexOf(name) == 0) {
       return c.substring(name.length, c.length);
     }
   }
@@ -112,7 +112,7 @@ function getCookieByName(cname) {
 }
 
 /**
- * Get a cookie whose value is a JSON string of an object by its name. 
+ * Get a cookie whose value is a JSON string of an object by its name.
  * Returns an object.
  * @param {string} name cookie name
  * @returns {object} cookie value as an object
@@ -121,8 +121,8 @@ function getObjectCookieByName(name) {
   // Source: https://stackoverflow.com/a/11344672
   // cookie.match() returns an array of match results or null if empty
   let result = document.cookie.match(new RegExp(name + '=([^;]+)'));
-  
-  // SHORT CIRC EVAL: If result is false/null, AND operator stops, returns orig. 
+
+  // SHORT CIRC EVAL: If result is false/null, AND operator stops, returns orig.
   // value of result, and the 2nd operand won't be evaluated.
   // Read more: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND
   result && (result = JSON.parse(result[1]));
@@ -130,7 +130,7 @@ function getObjectCookieByName(name) {
 }
 
 /**
- * Get all cookies stored in the site and return them as an object with a collection of cookies. 
+ * Get all cookies stored in the site and return them as an object with a collection of cookies.
  * Assumes that each cookie only has one value and takes into account object values.
  * @returns Object containing the parsed collection of cookies, or null if empty.
  */
