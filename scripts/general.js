@@ -35,7 +35,21 @@ function isObject(obj) {
  * @returns {boolean} true if `obj` is nullish or empty, else false.
  */
 function isEmpty(obj) {
-  return (obj === '' || obj === null || obj === undefined) || Object.values(obj).every(x => isObject(x) ? isEmpty(x) : (x === '' || x === null || x === undefined));
+  return (obj === '' || obj === null || obj === undefined) 
+        || Object.values(obj).every(
+            x => isObject(x) ? isEmpty(x) : (x === '' || x === null || x === undefined)
+        );
+}
+
+// Source: https://stackoverflow.com/a/29516227
+function printNestedObject(obj) {
+  for (var key in obj) {
+    if (typeof obj[key] === "object") {
+        printValues(obj[key]);   
+    } else {
+        console.log(obj[key]);    
+    }
+  }
 }
 
 

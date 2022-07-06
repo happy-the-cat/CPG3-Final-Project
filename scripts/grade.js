@@ -83,7 +83,7 @@ function addrow() {
   inputItem2.setAttribute("placeholder", "Weighted of Category");
   inputItem2.setAttribute("min", "1");
   inputItem2.setAttribute("max", "100");
-  inputItem2.setAttribute("oninvalid", "this.setCustomValidity('Please a number between 1 to 100.')");
+  inputItem2.setAttribute("oninvalid", "this.setCustomValidity('Please a whole number between 1 to 100.')");
   inputItem2.setAttribute("oninput", "this.setCustomValidity('')");
   inputItem2.id = "weight"
   inputItem2.required = true;
@@ -95,7 +95,8 @@ function addrow() {
   inputItem3.setAttribute("placeholder", "Your Grade Percent");
   inputItem3.setAttribute("min", "1");
   inputItem3.setAttribute("max", "100");
-  inputItem3.setAttribute("oninvalid", "this.setCustomValidity('Please a number between 1 to 100.')");
+  inputItem3.setAttribute("step", "0.01");
+  inputItem3.setAttribute("oninvalid", "this.setCustomValidity('Please a number between 1.00 to 100.00.')");
   inputItem3.setAttribute("oninput", "this.setCustomValidity('')");
   inputItem3.id="percentage"
   inputItem3.required = true;

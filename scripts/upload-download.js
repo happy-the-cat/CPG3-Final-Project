@@ -11,7 +11,7 @@ document.getElementById("download-btn").addEventListener("click", function(e) {
   } else {
     // Source: https://stackoverflow.com/a/68330734
     this.href = URL.createObjectURL(
-      new Blob([JSON.stringify(cookies)], {type: "application/json"})
+      new Blob([JSON.stringify(cookies, null, 2)], {type: "application/json"})
     );
     this.setAttribute("download", "grade-calculator-data.json");
     statusField.textContent = "Downloaded successfully!";

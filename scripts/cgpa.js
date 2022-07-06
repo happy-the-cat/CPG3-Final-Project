@@ -79,6 +79,9 @@ function addrow() {
   inputItem2.setAttribute("type", "number");
   inputItem2.setAttribute("class", "form-control");
   inputItem2.setAttribute("placeholder", "number");
+  inputItem3.setAttribute("min", "1");
+  inputItem3.setAttribute("max", "4");
+  inputItem3.setAttribute("step", "0.5");
   inputItem2.id = "weight"
   cell2.appendChild(inputItem2);
 
