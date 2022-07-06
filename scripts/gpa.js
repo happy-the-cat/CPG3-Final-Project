@@ -1,12 +1,14 @@
 /********************************** CONSTANTS **********************************/
-const COOKIE_NAME = "gpa"; // change to w.e u want
+const COOKIE_NAME = "gpa";
 var num = 5;
+
 /**************************** Sequential function calls *************************/
 // Add click event listener to all functions
 addListenerToNavItems(navItemsClickHandler);
 // Load save values onto their corresponding HTML elements
 loadSavedValues();
 
+/**************************** FUNCTIONS DEFNITIONS ******************************/
 function navItemsClickHandler() {
   var table = document.getElementById("table");
   const names = [];

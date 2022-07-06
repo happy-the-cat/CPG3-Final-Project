@@ -51,7 +51,7 @@ document.getElementById("form").addEventListener("submit",
 );
 
 
-/********************************** FUNCTIONS ***********************************/
+/**************************** FUNCTIONS DEFNITIONS ******************************/
 /**
  * Updates parameters the given GPANeeded instance to what the user has inputted.
  * @param {GPANeededCalc} obj 
