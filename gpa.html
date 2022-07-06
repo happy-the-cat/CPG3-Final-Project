@@ -57,7 +57,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Some instructions/images...
+                    Easily calculate GPA for a Term by making use of the units for each subject alongside their respective final grades.
+                    <ol>
+                        <li>Determine the number of courses you took for a term.</li>
+                        <ul> 
+                            <li>After getting the number of courses click the <span class="mark">Add Row</span> Button in order to place the appropriate amount rows for compuation</li>
+                            <li>Alternatively the user can delete rows by pressing the <span class="mark">Delete Row</span> Button if there are excess rows</li>
+                        </ul>
+                        <li>Determine your final grade for each of these courses and place a value between 1 and 5</li>
+                        <li>Insert the Units of the course in the <i>Unit</i> column of the approrpiate course along side the final grade in the <i>Grade</i> column </li>
+                        <li>Once all the fields have been filled up the <span class="mark">Calculate</span> Button can be pressed to get the Final GPA of the Student in the current term</li>
+                    </ol>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -66,6 +76,7 @@
         </div>
     </div>
 
+    <p>Calculate Your GPA for a Specific Term. Click Help for more details.</p>
     <!-- Table -->
     <!-- To resize table width, set CSS width property of table-container class -->
     <div class="row">
@@ -124,12 +135,10 @@
                         <tr id="row5">
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Course" id="name" required></td>
-                            <td><input type="number" class="form-control" placeholder="Units of Course" 
-                                id="weight" min="1" max="5" required
+                            <td><input type="number" class="form-control" placeholder="Units of Course" id="weight"min="1" max="5" required
                                 oninvalid="this.setCustomValidity('Please a whole number between 1 and 5.')"
                                 oninput="this.setCustomValidity('')"></td>
-                            <td><input type="number" class="form-control" placeholder="Grade Recieved" 
-                                id="percentage" min="1" max="4" step="0.5" required
+                            <td><input type="number" class="form-control" placeholder="Grade Recieved" id="percentage"min="1" max="4" step="0.5" required
                                 oninvalid="this.setCustomValidity('Please a number between 1.0 to 4.0.')"
                                 oninput="this.setCustomValidity('')"></td>
                         </tr>
