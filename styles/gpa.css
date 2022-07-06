@@ -1,0 +1,28 @@
+.row {
+  /* Remove default horizontal gutter of bootstrap row class */
+	-bs-gutter-x: 0;
+}
+
+table {
+  table-layout: fixed;
+}
+
+@media (min-width: 768px) {  /* md breakpoint */
+  .result-container {
+    padding-left: 3rem;
+  }
+}
+.result-container {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.result-container>* {
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+}
+.result-container>input {
+  background-color: var(--highlight);
+  border-radius: 0.5rem;
+}

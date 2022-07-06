@@ -39,7 +39,7 @@ function loadSavedValues() {
 
 
   if(obj.len>6){
-    for(let i=0;i<obj.len-6;i++){
+    for(let i=0;i<  obj.len-6;i++){
       addrow();
     }
   }
@@ -65,33 +65,28 @@ function addrow() {
   row.id = "row"+(num).toString();
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
+  row.insertCell(0).outerHTML = "<th scope='row' style='display: none;'></th>"
 
   //https://stackoverflow.com/questions/34091136/insert-a-new-row-of-input-tags-using-javascript
   var inputItem1 = document.createElement('input');
   inputItem1.setAttribute("type", "text");
   inputItem1.setAttribute("class", "form-control");
-  inputItem1.setAttribute("placeholder", "text");
+  inputItem1.setAttribute("placeholder", "Course Code");
   inputItem1.id = "name";
   cell1.appendChild(inputItem1);
 
   var inputItem2 = document.createElement('input');
   inputItem2.setAttribute("type", "number");
   inputItem2.setAttribute("class", "form-control");
-  inputItem2.setAttribute("placeholder", "number");
-  inputItem3.setAttribute("min", "1");
-  inputItem3.setAttribute("max", "4");
-  inputItem3.setAttribute("step", "0.5");
+  inputItem2.setAttribute("placeholder", "Course GPA");
+  inputItem2.setAttribute("min", "1");
+  inputItem2.setAttribute("max", "4");
+  inputItem2.setAttribute("oninvalid", "this.setCustomValidity('Please a whole number between 1 to 5.')");
+  inputItem2.setAttribute("oninput", "this.setCustomValidity('')");
+  inputItem2.required = true;
   inputItem2.id = "weight"
   cell2.appendChild(inputItem2);
-
-  var inputItem3 = document.createElement('input');
-  inputItem3.setAttribute("type", "number");
-  inputItem3.setAttribute("class", "form-control");
-  inputItem3.setAttribute("placeholder", "number");
-  inputItem3.id="percentage"
-  cell3.appendChild(inputItem3);
-
+  console.log(cell2);
   num++;
 }
 
@@ -106,6 +101,8 @@ function delrow() {
 function total(){
   var table = document.getElementById("table");
   let gpa = 0;
+  console.log("Table Length: " + table.rows.length);
+  console.log(table);
 
   for(let i = 1; i<table.rows.length; i++){
       gpa += Number(table.rows[i].cells[2].children[0].value);
