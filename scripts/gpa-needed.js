@@ -70,7 +70,9 @@ function navItemsClickHandler() {
 }
 
 function loadSavedValues() {
-  const cookieObj = getObjectCookieByName(COOKIE_NAME);
+  const cookieObj = getObjectCookieByName(COOKIE_NAME);  
+  if (isEmpty(cookieObj)) return; // if cookie non-existent, return
+
   const keys = Object.keys(cookieObj);
   // If cookie object is not empty, iterate thru each key and set the its value
   // as the value of its counterpart in the GPANeeded object instance. 

@@ -1,5 +1,5 @@
 /********************************** CONSTANTS **********************************/
-const COOKIE_NAME = "gpa";
+const COOKIE_NAME = "gpaCookie";  // for some reason, "gpa" as cookie name won't work properly
 var num = 5;
 
 /**************************** Sequential function calls *************************/
@@ -35,6 +35,9 @@ function navItemsClickHandler() {
 
 function loadSavedValues() {
   let obj = getObjectCookieByName(COOKIE_NAME);
+
+  if (isEmpty(obj)) return; // if cookie non-existent, return
+
   var table = document.getElementById("table");
 
   if(obj.len>6){

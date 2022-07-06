@@ -22,6 +22,9 @@ function navItemsClickHandler() {
 
 function loadSavedValues() {
   let obj = getObjectCookieByName(COOKIE_NAME);
+  // if cookie non-existent, return
+  if (isEmpty(cookieObj)) return;
+  
   // replace with ur codes to load the last saved table contents (saved in an object) here
   // check general.js for the list of cookie functions
   document.getElementById("exampleFormControlInput1").value = obj.email;
