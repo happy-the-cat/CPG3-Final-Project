@@ -71,7 +71,7 @@ function addrow() {
   var inputItem1 = document.createElement('input');
   inputItem1.setAttribute("type", "text");
   inputItem1.setAttribute("class", "form-control");
-  inputItem1.setAttribute("placeholder", "Course Code");
+  inputItem1.setAttribute("placeholder", "Term Number");
   inputItem1.id = "name";
   cell1.appendChild(inputItem1);
 
