@@ -78,7 +78,8 @@ function addrow() {
   var inputItem2 = document.createElement('input');
   inputItem2.setAttribute("type", "number");
   inputItem2.setAttribute("class", "form-control");
-  inputItem2.setAttribute("placeholder", "Course GPA");
+  inputItem2.setAttribute("placeholder", "Term GPA");
+  inputItem2.setAttribute("step", "0.00001");
   inputItem2.setAttribute("min", "1");
   inputItem2.setAttribute("max", "4");
   inputItem2.setAttribute("oninvalid", "this.setCustomValidity('Please a whole number between 1 to 5.')");
