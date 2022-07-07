@@ -57,7 +57,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Some instructions/images...
+                    Easily calculate grade for a subject by making use of the percentages of the rubrics for grading in a class.
+                    <ol>
+                        <li>Determine the number of rubrics for the final grade of a class through the syllabus of each respective class.</li>
+                        <ul> 
+                            <li>After getting the number of rubrics click the <span class="mark">Add Row</span> Button in order to place the appropriate amount rows for compuation</li>
+                            <li>Alternatively the user can delete rows by pressing the <span class="mark">Delete Row</span> Button if there are excess rows</li>
+                        </ul>
+                        <li>Determine the your percentage for each of these rubriics and place a value between 1 and 100</li>
+                        <li>Insert the Weight of the rubric in the <i>Weight</i> column of the approrpiate rubric along side the percentage in the <i>Your Percentage</i> column</li>
+                        <li>Once all the fields have been filled up the <span class="mark">Calculate</span> Button can be pressed to get the Final Grade of the Student in the subject</li>
+                    </ol>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -66,6 +76,7 @@
         </div>
     </div>
 
+    <p>Calculate Your Final Grade for a Specific Class. Click Help for more details.</p>
     <!-- Table -->
     <!-- To resize table width, set CSS width property of table-container class -->
     <div class="row">
@@ -86,12 +97,12 @@
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Category" id="name" required></td>
                             <td><input type="number" class="form-control" placeholder="Weighted of Category" 
-                                id="weight" min="1" max="100" required
-                                oninvalid="this.setCustomValidity('Please a whole number between 1 to 100.')"
+                                id="weight" min="1" max="100" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td><input type="number" class="form-control" placeholder="Your Grade Percent" 
                                 id="percentage" min="1" max="100" step="0.01" required
-                                oninvalid="this.setCustomValidity('Please a number between 1.00 to 100.00.')"
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td>-</td>
                         </tr>
@@ -99,12 +110,12 @@
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Category" id="name" required></td>
                             <td><input type="number" class="form-control" placeholder="Weighted of Category" 
-                                id="weight" min="1" max="100" required
-                                oninvalid="this.setCustomValidity('Please a whole number between 1 to 100.')"
+                                id="weight" min="1" max="100" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td><input type="number" class="form-control" placeholder="Your Grade Percent" 
                                 id="percentage" min="1" max="100" step="0.01" required
-                                oninvalid="this.setCustomValidity('Please a number between 1.00 to 100.00.')"
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td>-</td>
                         </tr>
@@ -112,12 +123,12 @@
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Category" id="name" required></td>
                             <td><input type="number" class="form-control" placeholder="Weighted of Category" 
-                                id="weight" min="1" max="100" required
-                                oninvalid="this.setCustomValidity('Please a whole number between 1 to 100.')"
+                                id="weight" min="1" max="100" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td><input type="number" class="form-control" placeholder="Your Grade Percent" 
                                 id="percentage" min="1" max="100" step="0.01" required
-                                oninvalid="this.setCustomValidity('Please a number between 1.00 to 100.00.')"
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td>-</td>
                         </tr>
@@ -125,12 +136,12 @@
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Category" id="name" required></td>
                             <td><input type="number" class="form-control" placeholder="Weighted of Category" 
-                                id="weight" min="1" max="100" required
-                                oninvalid="this.setCustomValidity('Please a whole number between 1 to 100.')"
+                                id="weight" min="1" max="100" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td><input type="number" class="form-control" placeholder="Your Grade Percent" 
                                 id="percentage" min="1" max="100" step="0.01" required
-                                oninvalid="this.setCustomValidity('Please a number between 1.00 to 100.00.')"
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td>-</td>
                         </tr>
@@ -138,12 +149,12 @@
                             <th scope="row" style="display: none;"></th>
                             <td><input type="text" class="form-control" placeholder="Name of Category" id="name" required></td>
                             <td><input type="number" class="form-control" placeholder="Weighted of Category" 
-                                id="weight" min="1" max="100" required
-                                oninvalid="this.setCustomValidity('Please a whole number between 1 to 100.')"
+                                id="weight" min="1" max="100" step="0.001" required
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td><input type="number" class="form-control" placeholder="Your Grade Percent" 
                                 id="percentage" min="1" max="100" step="0.01" required
-                                oninvalid="this.setCustomValidity('Please a number between 1.00 to 100.00.')"
+                                oninvalid="this.setCustomValidity('Please write number between 1 to 100.')"
                                 oninput="this.setCustomValidity('')"></td>
                             <td>-</td>
                         </tr>

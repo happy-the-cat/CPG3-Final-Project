@@ -41,17 +41,6 @@ function isEmpty(obj) {
         );
 }
 
-// Source: https://stackoverflow.com/a/29516227
-function printNestedObject(obj) {
-  for (var key in obj) {
-    if (typeof obj[key] === "object") {
-        printValues(obj[key]);   
-    } else {
-        console.log(obj[key]);    
-    }
-  }
-}
-
 
 /**************************** FUNCTIONS FOR COOKIES ****************************/
 /**
@@ -104,7 +93,7 @@ function setCookies(cookiesObj) {
 /**
  * Get a cookie value by its name and return it as a string.
  * @param {string} cname cookie name
- * @returns cookie value
+ * @returns cookie value if present, otherwise, null
  */
 function getCookieByName(cname) {
   // Source: https://www.w3schools.com/js/js_cookies.asp
@@ -122,14 +111,14 @@ function getCookieByName(cname) {
       return c.substring(name.length, c.length);
     }
   }
-  return "";
+  return null;
 }
 
 /**
  * Get a cookie whose value is a JSON string of an object by its name.
  * Returns an object.
  * @param {string} name cookie name
- * @returns {object} cookie value as an object
+ * @returns {object} cookie value as an object if present, otherwise, null
  */
 function getObjectCookieByName(name) {
   // Source: https://stackoverflow.com/a/11344672

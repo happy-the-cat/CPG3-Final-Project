@@ -33,10 +33,12 @@ function navItemsClickHandler() {
 
 function loadSavedValues() {
   let obj = getObjectCookieByName(COOKIE_NAME);
+
+  if (isEmpty(obj)) return; // if cookie non-existent, return
+  
   var table = document.getElementById("table");
   // console.log("--------------");
   // console.log(obj);
-
 
   if(obj.len>6){
     for(let i=0;i<  obj.len-6;i++){
