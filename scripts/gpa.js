@@ -69,21 +69,21 @@ function addrow() {
   var inputItem1 = document.createElement('input');
   inputItem1.setAttribute("type", "text");
   inputItem1.setAttribute("class", "form-control");
-  inputItem1.setAttribute("placeholder", "text");
+  inputItem1.setAttribute("placeholder", "Name of Course");
   inputItem1.id = "name";
   cell1.appendChild(inputItem1);
 
   var inputItem2 = document.createElement('input');
   inputItem2.setAttribute("type", "number");
   inputItem2.setAttribute("class", "form-control");
-  inputItem2.setAttribute("placeholder", "number");
+  inputItem2.setAttribute("placeholder", "Units of Course");
   inputItem2.id = "weight"
   cell2.appendChild(inputItem2);
 
   var inputItem3 = document.createElement('input');
   inputItem3.setAttribute("type", "number");
   inputItem3.setAttribute("class", "form-control");
-  inputItem3.setAttribute("placeholder", "number");
+  inputItem3.setAttribute("placeholder", "Grade Received");
   inputItem3.id="percentage"
   cell3.appendChild(inputItem3);
 
