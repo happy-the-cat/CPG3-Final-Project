@@ -81,6 +81,14 @@ function addrow() {
   inputItem2.setAttribute("type", "number");
   inputItem2.setAttribute("class", "form-control");
   inputItem2.setAttribute("placeholder", "Units of Course");
+
+    //required
+    // oninvalid="this.setCustomValidity('Please a whole number between 1 and 5.')"
+    // oninput="this.setCustomValidity('')"
+  inputItem2.setAttribute("required", "");
+  inputItem2.setAttribute("onvalid", "this.setCustomValidity('Please a whole number between 1 and 5.')");
+  inputItem2.setAttribute("oninput", "this.setCustomValidity('')");
+
   inputItem2.id = "weight"
   cell2.appendChild(inputItem2);
 
@@ -88,6 +96,11 @@ function addrow() {
   inputItem3.setAttribute("type", "number");
   inputItem3.setAttribute("class", "form-control");
   inputItem3.setAttribute("placeholder", "Grade Received");
+
+  inputItem3.setAttribute("required", "");
+  inputItem3.setAttribute("onvalid", "this.setCustomValidity('Please enter a number between 1.0 to 4.0.')");
+  inputItem3.setAttribute("oninput", "this.setCustomValidity('')");
+
   inputItem3.id="percentage"
   cell3.appendChild(inputItem3);
 
